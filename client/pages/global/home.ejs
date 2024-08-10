@@ -2,11 +2,80 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="assets/css/scrollbar.css">
     <title>Balines Mojados</title>
 </head>
 <body>
-    <h1>inicio</h1>
+    <header>
+        <div class="title">
+            <h1>BALINES MOJADOS</h1>
+        </div>
+        <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="#">Información</a></li>
+            <li><a href="#">Clientes</a></li>
+            <li><a href="#">Blogs</a></li>
+            <li><a href="#">Planes</a></li>
+        </ul>
+    </header>
+    <section class="firstSection">
+        <div class="title">
+            <h1>Explora el mundo del trading con nuestro <span>Plan de curso</span></h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni consequatur numquam dolorem, sunt sequi ullam dolorum eligendi quam, possimus ea, facere unde rerum veritatis deserunt repellat. Quasi ullam beatae laborum.</p>            
+        </div>
+        <div class="buttons">
+            <a href="#">Comenzar</a>
+            <a href="#">Demo</a>
+        </div>
+        <img src="/assets/images/render.png" class="render" alt="">
+    </section>
+
+    <div id="map"></div>
 </body>
+
+
+    <!-- prettier-ignore -->
+    
+
+<script>
+    (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+      key: "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg",
+      v: "weekly",
+      // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+      // Add other bootstrap parameters as needed, using camel case.
+    });
+  </script>
+
+<script>
+    let map;
+
+async function initMap() {
+// The location of Uluru
+const position = { lat: -34.5610542, lng: -58.4594438 };
+
+// Request needed libraries.
+//@ts-ignore
+const { Map } = await google.maps.importLibrary("maps");
+const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+// The map, centered at Uluru
+map = new Map(document.getElementById("map"), {
+zoom: 20,
+center: position,
+mapId: "DEMO_MAP_ID",
+});
+
+// The marker, positioned at Uluru
+const marker = new AdvancedMarkerElement({
+map: map,
+position: position,
+title: "Uluru",
+});
+}
+
+initMap();
+</script>
 </html>
