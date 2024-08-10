@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono+Poppins:ital,wght@0,100..700;1,100..700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+:root {
+    --up-green-color: #82B837;
+    --up-green-background: #2E3625;
+    --down-red-color: #FC6668;
+    --down-red-background: #3E2324;
+    --main-color-purple: #B298FA;
+    --text-purple-opacity: #665e7a;
+    --text-purple-desc: #d3d0e0;
+}
+
+body {
+    background: #1A1920;
+}
+
+header {
+    color: white;
+    padding: 2%;
+}
+
+header .title h1 {
+    font-size: 25px;
+    font-weight: 200;
+}
+
+header ul {
+    display: flex;
+    margin-left: 35%;
+    margin-top: -1.5%;
+}
+
+header li {
+    list-style: none;
+    margin-right: 5%;
+}
+
+header li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+header .button {
+    background-image: linear-gradient(90deg, rgba(120,79,230,1) 0%, rgba(103,52,214,1) 100%);
+    text-decoration: none;
+    color: white;
+    padding: 15px 35px;
+    border-radius: 5px;
+    position: absolute;
+    right: 2%;
+    margin-top: -2%;
+    font-weight: bold;
+}
+
+.firstSection .title {
+    color: white;
+    margin-top: 5%;
+    width: 35em;
+    position: relative;
+    left: calc(50% - (65em/2));
+}
+
+.firstSection .title h1 {
+    letter-spacing: 1px;
+    font-size: 25px;
+}
+
+.firstSection .title p {
+    color: var(--text-purple-desc);
+    margin-top: 2%;
+    font-weight: 600;
+    font-size: 15px;
+    
+}
+
+.firstSection .buttons {
+    position: relative;
+    margin-left: 55px;
+    margin-top: 3%;
+    left: calc(50% - (72em/2));
+}
+
+.firstSection .buttons a {
+    background-image: linear-gradient(90deg, rgba(120,79,230,1) 0%, rgba(103,52,214,1) 100%);
+    text-decoration: none;
+    color: white;
+    margin-right: 2%;
+    padding: 15px 35px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.firstSection .buttons a:last-child {
+    background: none;
+    border: 1px solid white;
+    transition: all .2s;
+}
+
+.firstSection .buttons a:last-child:hover {
+    background: white;
+    color: black;
+}
+
+.firstSection .render {
+    position: absolute;
+    top: 10%;
+    z-index: -1;
+    right: 10%;
+    width: 50%;
+}
+
+footer {
+    text-align: center;
+    color: #aaa6b4;
+    background-color: #17171B;
+    position: absolute;
+    bottom: 50;
+    width: 100%;
+    padding: 5% 0;
+}
+
