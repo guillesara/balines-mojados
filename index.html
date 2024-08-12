@@ -7,6 +7,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="assets/css/scrollbar.css">
     <link rel="stylesheet" href="assets/css/signForm.css">
+    <link rel="stylesheet" href="assets/css/calendar.css">
     <title>Balines Mojados</title>
 </head>
 <body>
@@ -33,6 +34,27 @@
             <a href="#">Contacto</a>
         </div>
     </section>
+    <div class="wrapper">
+        <div class="top">
+          <p class="current-date"></p>
+          <div class="icons">
+            <span id="prev" class="material-symbols-rounded"><i class='bx bxs-chevron-left' ></i></span>
+            <span id="next" class="material-symbols-rounded"><i class='bx bxs-chevron-right' ></i></span>
+          </div>
+        </div>
+        <div class="calendar">
+          <ul class="weeks">
+            <li>DO</li>
+            <li>LU</li>
+            <li>MA</li>
+            <li>MI</li>
+            <li>JU</li>
+            <li>VI</li>
+            <li>SA</li>
+          </ul>
+          <ul class="days"></ul>
+        </div>
+      </div>
     <video src="assets/images/bg.mp4" autoplay loop></video>
     <div class="bg"></div>
     <section class="secondSection" id="info">
@@ -103,29 +125,52 @@
     </section>
     <div class="wsp"><a href="https://api.whatsapp.com/send?phone=5491165651414&text=Hola,%20necesito%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Balines%20Mojados" target="_blank"><i class='bx bxl-whatsapp'></i></a></div>
     <div class="signForm" id="signForm">
-        <div class="bg2"></div>
-        <form>
-            <button class="closeBtn">X</button>
-            <div class="title">
-                <h1>REGISTER</h1>
+        <div class="register invisible">
+            <div class="bg2"></div>
+            <div class="signFrame">
+                <button class="closeBtn">X</button>
+                <div class="title">
+                    <h1>REGISTER</h1>
+                </div>
+                <div class="inputs">
+                    <div class="element">
+                        <h4>Correo Electrónico</h4>
+                        <input type="email" name="email" />
+                    </div>
+                    <div class="element">
+                        <h4>Usuario</h4>
+                        <input type="text" name="username" />
+                    </div>
+                    <div class="element">
+                        <h4>Contraseña</h4>
+                        <input type="password" name="password" />
+                    </div>
+                    <button class="signBtn">SIGN UP</button>
+                    <span>¿No tienes una cuenta? <button class="signInBtn">Inicia sesión</button></span>
+                </div>
             </div>
-            <div class="inputs">
-                <div class="element">
-                    <h4>Correo Electrónico</h4>
-                    <input type="text" name="username" />
+        </div>
+        <div class="login invisible">
+            <div class="bg2"></div>
+            <div class="signFrame">
+                <button class="closeBtn">X</button>
+                <div class="title">
+                    <h1>LOGIN</h1>
                 </div>
-                <div class="element">
-                    <h4>Usuario</h4>
-                    <input type="text" name="username" />
+                <div class="inputs">
+                    <div class="element">
+                        <h4>Usuario</h4>
+                        <input type="text" name="username" />
+                    </div>
+                    <div class="element">
+                        <h4>Contraseña</h4>
+                        <input type="password" name="password" />
+                    </div>
+                    <button class="signBtn">SIGN UP</button>
+                    <span>¿No tienes una cuenta? <button class="signInBtn">Inicia sesión</button></span>
                 </div>
-                <div class="element">
-                    <h4>Contraseña</h4>
-                    <input type="password" name="password" />
-                </div>
-                <button class="signBtn">SIGN UP</button>
-                <span>¿No tienes una cuenta? <button class="signInBtn">Inicia sesión</button></span>
             </div>
-        </form>
+        </div>
     </div>
     <footer>
         <div class="information">
@@ -139,6 +184,9 @@
         <span id="copyright">© Copyright 2024. All Rights Reserved.</span>
         
     </footer>
+
+    
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/script.js" defer></script>
 </body>
 </html>
