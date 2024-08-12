@@ -81,7 +81,7 @@ header .button {
     position: absolute;
     right: 2%;
     cursor: pointer;
-    margin-top: -2.5%;
+    top: 3%;
     font-weight: bold;
     border: none;
 }
@@ -315,4 +315,8 @@ footer a {
     color: #B298FA;
     margin-left: -40%;
     
+}
+
+.invisible {
+    visibility: hidden;
 }
