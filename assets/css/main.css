@@ -57,13 +57,18 @@ header .title h1 {
 
 header ul {
     display: flex;
-    margin-left: 35%;
+    position: absolute;
+    width: 100%;
+    
+    justify-content: center;
     margin-top: -1.5%;
+    
 }
 
 header li {
     list-style: none;
     margin-right: 5%;
+    text-align: center;
 }
 
 header li a {
