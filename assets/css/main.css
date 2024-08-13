@@ -1,191 +1,325 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="assets/css/scrollbar.css">
-    <link rel="stylesheet" href="assets/css/signForm.css">
-    <link rel="stylesheet" href="assets/css/calendar.css">
-    <title>Balines Mojados</title>
-</head>
-<body>
-    <header>
-        <div class="title">
-            <h1>BALINES MOJADOS</h1>
-        </div>
-        <ul>
-            <li><a href="/">Inicio</a></li>
-            <li><a href="#info">Planes</a></li>
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
 
-            <li><a href="#">Contacto</a></li>
-        </ul>
-        <button class="button" id="signBtn">Iniciar Sesión</button>
-    </header>
-    <section class="firstSection">
-        <div class="title">
-            <h1>Explora la experiencia del mundo de PaintBall con <span>Balines Mojados</span></h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni consequatur numquam dolorem, sunt sequi ullam dolorum eligendi quam, possimus ea, facere unde rerum veritatis deserunt repellat. Quasi ullam beatae laborum.</p>            
-        </div>
-        <div class="buttons">
-            <a href="#">Reservar</a>
-            <a href="#">Contacto</a>
-        </div>
-    </section>
-    <div class="wrapper">
-        <div class="top">
-          <p class="current-date"></p>
-          <div class="icons">
-            <span id="prev" class="material-symbols-rounded"><i class='bx bxs-chevron-left' ></i></span>
-            <span id="next" class="material-symbols-rounded"><i class='bx bxs-chevron-right' ></i></span>
-          </div>
-        </div>
-        <div class="calendar">
-          <ul class="weeks">
-            <li>DO</li>
-            <li>LU</li>
-            <li>MA</li>
-            <li>MI</li>
-            <li>JU</li>
-            <li>VI</li>
-            <li>SA</li>
-          </ul>
-          <ul class="days"></ul>
-        </div>
-      </div>
-    <video src="assets/images/bg.mp4" loop autoplay muted controls></video>
-    <div class="bg"></div>
-    <section class="secondSection" id="info">
-        <div class="title">
-            <h1>Información</h1>
-        </div>
-        <div class="cards">
-            <div class="card">
-                <div class="info">
-                    <i class='bx bx-crown'></i>
-                    <span class="title2">Packs 1</span>
-                    <div class="pricing">
-                        <span>$280 <small>Anualmente</small></span>
-                        
-                    </div>
-                    <div class="packDesc">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores doloremque nostrum, perferendis fugit obcaecati autem voluptas id quis dolorum ut aut praesentium omnis iusto laborum quae fugiat? Dolorum, et error.</p>
-                    </div>
-                    <a href="#">Entrar</a>
-                </div>
-            </div>
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
 
-            <div class="card">
-                <div class="info">
-                    <i class='bx bx-crown'></i>
-                    <span class="title2">Packs 1</span>
-                    <div class="pricing">
-                        <span>$280 <small>Anualmente</small></span>
-                        
-                    </div>
-                    <div class="packDesc">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores doloremque nostrum, perferendis fugit obcaecati autem voluptas id quis dolorum ut aut praesentium omnis iusto laborum quae fugiat? Dolorum, et error.</p>
-                    </div>
-                    <a href="#">Entrar</a>
-                </div>
-            </div>
+:root {
+    --up-green-color: #82B837;
+    --up-green-background: #2E3625;
+    --down-red-color: #FC6668;
+    --down-red-background: #3E2324;
+    --main-color-purple: #B298FA;
+    --text-purple-opacity: #665e7a;
+    --text-purple-desc: #d3d0e0;
+}
 
-            <div class="card">
-                <div class="info">
-                    <i class='bx bx-crown'></i>
-                    <span class="title2">Packs 1</span>
-                    <div class="pricing">
-                        <span>$280 <small>Anualmente</small></span>
-                        
-                    </div>
-                    <div class="packDesc">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores doloremque nostrum, perferendis fugit obcaecati autem voluptas id quis dolorum ut aut praesentium omnis iusto laborum quae fugiat? Dolorum, et error.</p>
-                    </div>
-                    <a href="#">Entrar</a>
-                </div>
-            </div>
+body {
+    background: #1A1920;
+}
 
-            <div class="card">
-                <div class="info">
-                    <i class='bx bx-crown'></i>
-                    <span class="title2">Packs 1</span>
-                    <div class="pricing">
-                        <span>$280 <small>Anualmente</small></span>
-                        
-                    </div>
-                    <div class="packDesc">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores doloremque nostrum, perferendis fugit obcaecati autem voluptas id quis dolorum ut aut praesentium omnis iusto laborum quae fugiat? Dolorum, et error.</p>
-                    </div>
-                    <a href="#">Entrar</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <div class="wsp"><a href="https://api.whatsapp.com/send?phone=5491165651414&text=Hola,%20necesito%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Balines%20Mojados" target="_blank"><i class='bx bxl-whatsapp'></i></a></div>
-    <div class="signForm" id="signForm">
-        <div class="register invisible">
-            <div class="bg2"></div>
-            <div class="signFrame">
-                <button class="closeBtn">X</button>
-                <div class="title">
-                    <h1>REGISTER</h1>
-                </div>
-                <div class="inputs">
-                    <div class="element">
-                        <h4>Correo Electrónico</h4>
-                        <input type="email" name="email" />
-                    </div>
-                    <div class="element">
-                        <h4>Usuario</h4>
-                        <input type="text" name="username" />
-                    </div>
-                    <div class="element">
-                        <h4>Contraseña</h4>
-                        <input type="password" name="password" />
-                    </div>
-                    <button class="signBtn">SIGN UP</button>
-                    <span>¿No tienes una cuenta? <button class="signInBtn">Inicia sesión</button></span>
-                </div>
-            </div>
-        </div>
-        <div class="login invisible">
-            <div class="bg2"></div>
-            <div class="signFrame">
-                <button class="closeBtn">X</button>
-                <div class="title">
-                    <h1>LOGIN</h1>
-                </div>
-                <div class="inputs">
-                    <div class="element">
-                        <h4>Usuario</h4>
-                        <input type="text" name="username" />
-                    </div>
-                    <div class="element">
-                        <h4>Contraseña</h4>
-                        <input type="password" name="password" />
-                    </div>
-                    <button class="signBtn">SIGN UP</button>
-                    <span>¿No tienes una cuenta? <button class="signInBtn">Inicia sesión</button></span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <footer>
-        <div class="information">
-            <div class="info">
-                <h2>¿Donde estamos ubicados?</h2>
-                <p>Puerto Núñez – Avenida Cantilo y Arroyo Medrano Predio Club Centro Naval Sede Núñez Nuñez – CABA Argentina</p>
-                <a href="mailto: profesorolaso2024@gmail.com">profesorolaso2024@gmail.com</a>
-            </div>
-            <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=urban%20paintball%20extremo&amp;t=m&amp;z=14&amp;output=embed&amp;iwloc=near" class="corredo_resize trx_addons_resize"></iframe>
-        </div>
-        <span id="copyright">© Copyright 2024. All Rights Reserved.</span>
-        
-    </footer>
+video {
+    position: absolute;
+    top: 0;
+    z-index: -2;
+    width: 100%;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, .5));
+	mask-image: linear-gradient(to bottom, black 80%, transparent 100%);		
+}
 
-    
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/script.js" defer></script>
-</body>
-</html>
+.bg {
+    background: rgba(0, 0, 0, .5);
+    width: 100%;
+    height: 120%;
+    position: absolute;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, .5));
+	mask-image: linear-gradient(to bottom, black 80%, transparent 100%);		
+    top: 0;
+    z-index: -1;
+}
+
+header {
+    color: white;
+    padding: 2%;
+}
+
+header .title h1 {
+    font-size: 25px;
+    font-weight: 200;
+}
+
+header ul {
+    display: flex;
+    position: absolute;
+    width: 100%;
+
+    justify-content: center;
+    margin-top: -1.5%;
+
+}
+
+header li {
+    list-style: none;
+    margin-right: 5%;
+    text-align: center;
+}
+
+header li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+header .button {
+    background-image: linear-gradient(0deg, rgba(120,79,230,1) 0%, rgba(103,52,214,1) 100%);
+    text-decoration: none;
+    color: white;
+    padding: 15px 35px;
+    border-radius: 5px;
+    position: absolute;
+    right: 2%;
+    cursor: pointer;
+    top: 3%;
+    font-weight: bold;
+    border: none;
+}
+
+.firstSection {
+    height: 100vh;
+}
+
+.firstSection .title {
+    color: white;
+    margin-top: 5%;
+    width: 35em;
+    position: relative;
+    left: 155px;
+}
+
+.firstSection .title span {
+    color: #966efc;
+}
+
+.firstSection .title h1 {
+    letter-spacing: 1px;
+    font-size: 25px;
+}
+
+.firstSection .title p {
+    color: var(--text-purple-desc);
+    margin-top: 2%;
+    font-weight: 600;
+    font-size: 15px;
+
+}
+
+.firstSection .buttons {
+    position: relative;
+    margin-top: 3%;
+    left: 155px;
+}
+
+.firstSection .buttons a {
+    background-image: linear-gradient(90deg, rgba(120,79,230,1) 0%, rgba(103,52,214,1) 100%);
+    text-decoration: none;
+    color: white;
+    margin-right: 2%;
+    padding: 15px 35px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.firstSection .buttons a:last-child {
+    background: none;
+    border: 1px solid white;
+    transition: all .2s;
+}
+
+.firstSection .buttons a:last-child:hover {
+    background: white;
+    color: black;
+}
+
+.firstSection .render {
+    position: absolute;
+    top: 10%;
+    z-index: -1;
+    right: 10%;
+    width: 50%;   
+}
+
+.wsp {
+    position: fixed;
+    bottom: 45px;
+    right: 45px;
+    z-index: 50;
+    transition: all .2s;
+}
+
+.wsp:hover {
+    scale: 1.1;
+}
+
+.wsp i {
+    color: white;
+    background: #25d366;
+    font-size: 3rem;
+    padding: 15%;
+    border-radius: 100%;
+}
+
+.secondSection {
+    margin-bottom: 5%;
+}
+
+.secondSection .title {
+    position: relative;
+    text-align: center;
+    color: white;
+    margin-bottom: 5%;
+}
+
+.secondSection .title::after {
+    content: "";
+    display: block;
+    background-color: white;
+    width: 100px;
+    height: 2px;
+    border-radius: 5px;
+    margin: 5px auto 0;
+}
+
+.secondSection .cards {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.secondSection .cards .card {
+    background: #2D2839;
+    width: 300px;
+    margin: 0 2%;
+    border-radius: 15px;
+    padding: 2%;
+    border: 1px solid #b9a0ff;
+}
+
+.secondSection .cards .card .info {
+    padding: 5%;    
+}
+
+.secondSection .cards .card .title2 {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+
+}
+
+.secondSection .cards .card img {
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, .5));
+	mask-image: linear-gradient(to bottom, black 80%, transparent 100%);		
+}
+
+.secondSection .cards .card a {
+    display: block;
+    color: white;
+    background-image: linear-gradient(90deg, rgba(120,79,230,1) 0%, rgba(103,52,214,1) 100%);
+    text-decoration: none;
+
+    text-align: center;
+    left: calc(50% - (50%/2));
+    width: 50%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.secondSection .cards .card i {
+    font-size: 25px;
+    color: gold;
+    display: block;
+
+}
+
+.secondSection .cards .card p {
+    color: var(--text-purple-desc);
+}
+.secondSection .cards .card p::before {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: #3D384A;
+    margin-bottom: 15%;
+}
+
+
+.secondSection .cards .card .pricing {
+    margin-bottom: 5%;
+}
+
+.secondSection .cards .card .pricing span {
+    display: block;
+    font-size: 25px;
+    color: #b9a0ff;
+}
+
+.secondSection .cards .card .pricing small::before{
+    content: "/ ";
+}
+
+.secondSection .cards .card .pricing small {
+    color: white;
+}
+
+footer {
+    text-align: center;
+    color: #aaa6b4;
+    background-color: #17171B;
+    position: absolute;
+    bottom: 50;
+    width: 100%;
+    padding: 5% 0; 
+}
+
+footer .info {
+    position: absolute;
+    right: 20%;
+
+}
+footer .info h2 {
+    margin-left: -40%;
+}
+
+
+footer p {
+    width: 200px;
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+footer iframe {
+    height: 250px;
+    width: 450px;
+    display: block;
+    margin-left: 20%;
+    margin-bottom: 5%;
+}
+
+footer a {
+    color: #B298FA;
+    margin-left: -40%;
+
+}
+
+.invisible {
+    visibility: hidden;
+}
