@@ -1,43 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balines Mojados</title>
-</head>
-<body>
+<div id="signOut" class="register">
     <form action="/register" method="post">
-        <div class="title">
-            <h1>REGISTER</h1>
-        </div>
-        <div class="inputs">
-            <div class="element">
-                <span>Username</span>
-                <input type="text" name="username" />
+        <div class="bg2"></div>
+        <div class="signFrame">
+            <a href="/" class="closeBtn">X</a>
+            <div class="title">
+                <h1>REGISTER</h1>
             </div>
-            <div class="element">
-                <span>Password</span>
-                <input type="password" name="password" />
+            <div class="inputs">
+                <div class="element">
+                    <h4>Correo Electrónico</h4>
+                    <input type="mail" name="mail">
+                </div>
+                <div class="element">
+                    <h4>Usuario</h4>
+                    <input type="text" name="username">
+                </div>
+                <div class="element">
+                    <h4>Contraseña</h4>
+                    <input type="password" name="password">
+                </div>
+                <button class="signBtn">SIGN UP</button>
+                <span>¿Tienes una cuenta? <a href="/login">Inicia sesión</a></span>
             </div>
-            <button>SIGN UP</button>
         </div>
     </form>
-
-    <% if (typeof alert != "undefined") { %>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
-            Swal.fire({
-                title: "<%= alert.title %>",
-                text: "<%= alert.message %>",
-                icon: "<%= alert.icon %>",
-                showConfirmButton: "<%= alert.showConfirmButton %>",
-                confirmButtonColor: "#28a745",
-                timer: "<%= alert.time %>",
-            }).then(() => {
-                window.location = "/<%= alert.ruta %>"
-            })
-        </script>
-    <% } %>
-</body>
-</html>
+</div>

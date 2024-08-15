@@ -10,7 +10,7 @@ module.exports = (router, database) =>
         if (auth.isAuthenticated(functions.getCookie(req, "token"))) return res.redirect(`/user/panel`);
         if ((await auth.login(req, res, {token: functions.getCookie(req, "token")})).status) return res.redirect(`/user/panel`);
         
-        res.render('global/register', {});
+        res.render('global/home', { includes: 'register'});
     });
     router.post('/register', async (req, res) => {
         const body = req.body;
@@ -19,7 +19,7 @@ module.exports = (router, database) =>
         try {
             if (body.username < 4 && body.password < 4)
             {
-                res.render("global/register", {
+                res.render("global/home", {
                     alert: {
                         title: "Error",
                         message: "Incorrect data",
@@ -31,13 +31,13 @@ module.exports = (router, database) =>
                 });
             }
 
-            const [results] = await con.promise().query(`SELECT id FROM users WHERE username = ?`, [body.username]);
+            const [results] = await con.promise().query(`SELECT id FROM users WHERE username = ? OR mail = ?`, [body.username, body.mail]);
             if (results[0])
             {
-                res.render("global/register", {
+                res.render("global/home", {
                     alert: {
                         title: "Error",
-                        message: "Username already exist",
+                        message: "Username or mail already exist",
                         icon: "error",
                         showConfirmButton: true,
                         time: 5000,
@@ -49,9 +49,9 @@ module.exports = (router, database) =>
             }
 
             const passwordHash = await bcrypt.hash(body.password, 10);
-            const [results2] = await con.promise().query('INSERT INTO `users` SET ?', {username: body.username, password: passwordHash});
+            const [results2] = await con.promise().query('INSERT INTO `users` SET ?', {mail: body.mail, username: body.username, password: passwordHash});
 
-            res.render("global/register", {
+            res.render("global/home", {
                 alert: {
                     title: "Done",
                     message: "User created",
@@ -64,7 +64,7 @@ module.exports = (router, database) =>
         } catch (error) {
             console.error(error);
 
-            res.render("global/register", {
+            res.render("global/home", {
                 alert: {
                     title: "Error",
                     message: "Server error",

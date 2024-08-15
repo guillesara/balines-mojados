@@ -7,12 +7,12 @@ module.exports = (router, database) =>
         if (auth.isAuthenticated(functions.getCookie(req, "token"))) return res.redirect(`/user/panel`);
         if ((await auth.login(req, res, {token: functions.getCookie(req, "token")})).status) return res.redirect(`/user/panel`);
 
-        res.render('global/login', {});
+        res.render('global/home', { includes: 'login'});
     });
     router.post('/login', async (req, res) => {
         const body = req.body;
         const result = await auth.login(req, res, {username: body.username, password: body.password})
-        if (!result.status) return res.render('global/login', {error: result.info});
+        if (!result.status) return res.render('global/home', {  includes: 'login', error: result.info });
 
         res.redirect(`/user/panel`);   
     });

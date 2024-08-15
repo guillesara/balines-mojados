@@ -1,0 +1,325 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --up-green-color: #82B837;
+    --up-green-background: #2E3625;
+    --down-red-color: #FC6668;
+    --down-red-background: #3E2324;
+    --main-color-purple: #B298FA;
+    --text-purple-opacity: #665e7a;
+    --text-purple-desc: #d3d0e0;
+}
+
+body {
+    background: #1A1920;
+}
+
+video {
+    position: absolute;
+    top: 0;
+    z-index: -2;
+    width: 100%;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, .5));
+	mask-image: linear-gradient(to bottom, black 80%, transparent 100%);		
+}
+
+.bg {
+    background: rgba(0, 0, 0, .5);
+    width: 100%;
+    height: 120%;
+    position: absolute;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, .5));
+	mask-image: linear-gradient(to bottom, black 80%, transparent 100%);		
+    top: 0;
+    z-index: -1;
+}
+
+header {
+    color: white;
+    padding: 2%;
+}
+
+header .title h1 {
+    font-size: 25px;
+    font-weight: 200;
+}
+
+header ul {
+    display: flex;
+    position: absolute;
+    width: 100%;
+
+    justify-content: center;
+    margin-top: -1.5%;
+
+}
+
+header li {
+    list-style: none;
+    margin-right: 5%;
+    text-align: center;
+}
+
+header li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+header .button {
+    background-image: linear-gradient(0deg, rgba(120,79,230,1) 0%, rgba(103,52,214,1) 100%);
+    text-decoration: none;
+    color: white;
+    padding: 15px 35px;
+    border-radius: 5px;
+    position: absolute;
+    right: 2%;
+    cursor: pointer;
+    top: 3%;
+    font-weight: bold;
+    border: none;
+}
+
+.firstSection {
+    height: 100vh;
+}
+
+.firstSection .title {
+    color: white;
+    margin-top: 5%;
+    width: 35em;
+    position: relative;
+    left: 155px;
+}
+
+.firstSection .title span {
+    color: #966efc;
+}
+
+.firstSection .title h1 {
+    letter-spacing: 1px;
+    font-size: 25px;
+}
+
+.firstSection .title p {
+    color: var(--text-purple-desc);
+    margin-top: 2%;
+    font-weight: 600;
+    font-size: 15px;
+
+}
+
+.firstSection .buttons {
+    position: relative;
+    margin-top: 3%;
+    left: 155px;
+}
+
+.firstSection .buttons a {
+    background-image: linear-gradient(90deg, rgba(120,79,230,1) 0%, rgba(103,52,214,1) 100%);
+    text-decoration: none;
+    color: white;
+    margin-right: 2%;
+    padding: 15px 35px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.firstSection .buttons a:last-child {
+    background: none;
+    border: 1px solid white;
+    transition: all .2s;
+}
+
+.firstSection .buttons a:last-child:hover {
+    background: white;
+    color: black;
+}
+
+.firstSection .render {
+    position: absolute;
+    top: 10%;
+    z-index: -1;
+    right: 10%;
+    width: 50%;   
+}
+
+.wsp {
+    position: fixed;
+    bottom: 45px;
+    right: 45px;
+    z-index: 50;
+    transition: all .2s;
+}
+
+.wsp:hover {
+    scale: 1.1;
+}
+
+.wsp i {
+    color: white;
+    background: #25d366;
+    font-size: 3rem;
+    padding: 15%;
+    border-radius: 100%;
+}
+
+.secondSection {
+    margin-bottom: 5%;
+}
+
+.secondSection .title {
+    position: relative;
+    text-align: center;
+    color: white;
+    margin-bottom: 5%;
+}
+
+.secondSection .title::after {
+    content: "";
+    display: block;
+    background-color: white;
+    width: 100px;
+    height: 2px;
+    border-radius: 5px;
+    margin: 5px auto 0;
+}
+
+.secondSection .cards {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.secondSection .cards .card {
+    background: #2D2839;
+    width: 300px;
+    margin: 0 2%;
+    border-radius: 15px;
+    padding: 2%;
+    border: 1px solid #b9a0ff;
+}
+
+.secondSection .cards .card .info {
+    padding: 5%;    
+}
+
+.secondSection .cards .card .title2 {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+
+}
+
+.secondSection .cards .card img {
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, .5));
+	mask-image: linear-gradient(to bottom, black 80%, transparent 100%);		
+}
+
+.secondSection .cards .card a {
+    display: block;
+    color: white;
+    background-image: linear-gradient(90deg, rgba(120,79,230,1) 0%, rgba(103,52,214,1) 100%);
+    text-decoration: none;
+
+    text-align: center;
+    left: calc(50% - (50%/2));
+    width: 50%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.secondSection .cards .card i {
+    font-size: 25px;
+    color: gold;
+    display: block;
+
+}
+
+.secondSection .cards .card p {
+    color: var(--text-purple-desc);
+}
+.secondSection .cards .card p::before {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: #3D384A;
+    margin-bottom: 15%;
+}
+
+
+.secondSection .cards .card .pricing {
+    margin-bottom: 5%;
+}
+
+.secondSection .cards .card .pricing span {
+    display: block;
+    font-size: 25px;
+    color: #b9a0ff;
+}
+
+.secondSection .cards .card .pricing small::before{
+    content: "/ ";
+}
+
+.secondSection .cards .card .pricing small {
+    color: white;
+}
+
+footer {
+    text-align: center;
+    color: #aaa6b4;
+    background-color: #17171B;
+    position: absolute;
+    bottom: 50;
+    width: 100%;
+    padding: 5% 0; 
+}
+
+footer .info {
+    position: absolute;
+    right: 20%;
+
+}
+footer .info h2 {
+    margin-left: -40%;
+}
+
+
+footer p {
+    width: 200px;
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+footer iframe {
+    height: 250px;
+    width: 450px;
+    display: block;
+    margin-left: 20%;
+    margin-bottom: 5%;
+}
+
+footer a {
+    color: #B298FA;
+    margin-left: -40%;
+
+}
+
+.hide {
+    display: none;
+}
