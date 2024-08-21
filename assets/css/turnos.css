@@ -1,7 +1,19 @@
 .secondSection {
-    display: flex;
+    
     margin-left: 5%;
 }
+
+.form {
+    display: flex;
+    margin-left: 15%;
+}
+
+.secondSection .middle {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 18px;
+}
+
 
 .secondSection .middle button {
     background-image: linear-gradient(90deg, rgba(120,79,230,1) 0%, rgba(103,52,214,1) 100%);
@@ -16,7 +28,7 @@
     position: relative;
     border: none;
     cursor: pointer;
-
+    margin-top: 5%;
     margin-bottom: 10%;
 }
 
