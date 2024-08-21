@@ -74,6 +74,10 @@
     padding: 20px;
 }
 
+.times, .reserve, .packInfo p {
+    color: var(--text-purple-desc);
+}
+
 .secondSection .right .times span {
     color: var(--text-purple-desc);
     display: block;
