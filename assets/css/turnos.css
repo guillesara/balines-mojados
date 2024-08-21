@@ -1,0 +1,52 @@
+.secondSection {
+    display: flex;
+    margin-left: 5%;
+}
+
+.secondSection .middle button {
+    background-image: linear-gradient(90deg, rgba(120,79,230,1) 0%, rgba(103,52,214,1) 100%);
+    text-decoration: none;
+    color: white;
+    width: 78%;
+    padding: 15px 35px;
+    border-radius: 5px;
+    position: absolute;
+    margin-top: -2%;
+    font-weight: bold;
+    position: relative;
+    border: none;
+    cursor: pointer;
+
+    margin-bottom: 10%;
+}
+
+.secondSection .left .reserve .input {
+    margin-bottom: 5%;
+}
+
+.secondSection .left .reserve input {
+    background: none;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 3%;
+    width: 78%;
+    margin-top: 5px;
+    color: white;
+}
+
+.times, .reserve, .packInfo {
+    background: #2D2839;
+    border: 1px solid #b9a0ff;
+    width: 300px;
+    border-radius: 15px;
+    margin-right: 5%;
+    margin-top: 5%;
+    top: 10%;
+    z-index: 50;
+    color: white;
+    padding: 20px;
+}
+
+.secondSection .right .times span {
+    color: var(--text-purple-desc);
+}
