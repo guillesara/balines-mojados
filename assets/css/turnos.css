@@ -1,11 +1,14 @@
+
+
 .secondSection {
-    
     margin-left: 5%;
 }
 
 .form {
     display: flex;
-    margin-left: 15%;
+    margin: 0 auto;
+    max-width: 80%;
+    justify-content: center;
 }
 
 .secondSection .middle {
@@ -64,7 +67,7 @@
 .times, .reserve, .packInfo {
     background: #2D2839;
     border: 1px solid #b9a0ff;
-    width: 310px;
+    width: 410px;
     border-radius: 15px;
     margin-right: 5%;
     margin-top: 5%;
@@ -81,4 +84,36 @@
 .secondSection .right .times span {
     color: var(--text-purple-desc);
     display: block;
+}
+
+.secondSection .canchas {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 8%;
+}
+
+.secondSection .canchas img {
+    border-radius: 15px;
+    width: 350px;
+    height: 200px;
+    margin-bottom: 5%;
+}
+
+.secondSection .canchas .cancha {
+    color: white;
+    margin: 0 25px;
+    width: 350px;
+    height: 200px;
+    text-align: center;
+}
+
+.secondSection .canchas .cancha span {
+    font-weight: 600;
+    display: block;
+}
+
+.secondSection .selected {
+    border: 1px solid white;
+    border-radius: 15px;
 }
