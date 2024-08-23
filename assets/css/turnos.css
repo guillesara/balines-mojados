@@ -117,3 +117,12 @@
     border: 1px solid white;
     border-radius: 15px;
 }
+
+.occuped::before {
+    content: " ";
+    display: block;
+    background: white;
+    height: 1px;
+    width: 45px;
+    transform: translateY(10px);
+}
