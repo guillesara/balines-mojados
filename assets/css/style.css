@@ -347,21 +347,6 @@ body {
 	color: var(--blue);
 	pointer-events: unset;
 }
-#content main .head-title .btn-download {
-	height: 36px;
-	padding: 0 16px;
-	border-radius: 36px;
-	background: var(--blue);
-	color: var(--light);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	grid-gap: 10px;
-	font-weight: 500;
-}
-
-
-
 
 #content main .box-info {
 	display: grid;
@@ -487,6 +472,14 @@ body {
 }
 #content main .table-data .order table tr td .status.pending {
 	background: var(--orange);
+}
+
+#content main .table-data .order table tr td button {
+	border: none;
+	cursor: pointer;
+	font-size: 26px;
+	transform: translate(50px, 8px);
+	
 }
 
 

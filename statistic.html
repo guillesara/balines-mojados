@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/dashboard.css">
 	<title>AdminHub</title>
 </head>
 <body>
@@ -101,61 +102,27 @@
 
 
 			<div class="table-data">
-				<div class="order">
+				<div class="content-data">
 					<div class="head">
-						<h3>Turnos recientes</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
+						<h3>Sales Report</h3>
+						<div class="menu">
+							<i class='bx bx-dots-horizontal-rounded icon'></i>
+							<ul class="menu-link">
+								<li><a href="#">Edit</a></li>
+								<li><a href="#">Save</a></li>
+								<li><a href="#">Remove</a></li>
+							</ul>
+						</div>
 					</div>
-					<table>
-						<thead>
-							<tr>
-								<th>Usuario</th>
-								<th>Fecha de orden</th>
-								<th>Estado</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									<img src="assets/images//people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span> <button><i class='bx bx-edit' ></i></button></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="assets/images//people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-				
-								<td><span class="status pending">Cancelado</span><button><i class='bx bx-edit' ></i></button></td>
-								
-							</tr>
-							<tr>
-								<td>
-									<img src="assets/images//people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status process">Pendiente</span><button><i class='bx bx-edit' ></i></button></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="assets/images//people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span><button><i class='bx bx-edit' ></i></button></td>
-							</tr>
-						</tbody>
-					</table>
+					<div class="chart">
+						<div id="chart"></div>
+					</div>
 				</div>
 			</div>
 		</main>
 	</section>
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 	<script src="assets/js/script.js"></script>
+	<script src="assets/js/script2.js"></script>
 </body>
 </html>
