@@ -23,8 +23,18 @@ const renderCalendar = () => {
     }
 
     for (let i = 1; i <= lastDateofMonth; i++) {
-        let isToday = i === date.getDate() && currMonth === new Date().getMonth() && currYear === new Date().getFullYear() ? "active" : "";
-        liTag += `<li class="${isToday}">${i}</li>`;
+        if (i === date.getDate() && currMonth === new Date().getMonth() && currYear === new Date().getFullYear())
+        {
+            liTag += `<li class="active">${i}</li>`;
+        }
+        else if ((currYear < new Date().getFullYear()) || (currYear === new Date().getFullYear() && currMonth < new Date().getMonth()) || (currYear === new Date().getFullYear() && currMonth === new Date().getMonth() && i < date.getDate()))
+        {
+            liTag += `<li class="inactive">${i}</li>`;
+        }
+        else
+        {
+            liTag += `<li>${i}</li>`;
+        }
     }
 
     for (let i = lastDayofMonth; i < 6; i++) {

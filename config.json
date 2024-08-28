@@ -6,7 +6,7 @@
     "db": {
         "host": "localhost",
         "user": "root",
-        "pass": "admin",
+        "pass": "",
         "db": "balines-mojados"
     },
 

@@ -2,19 +2,18 @@ const mysql = require('mysql2');
 
 module.exports = (router, database) => 
 {
-    router.get('/reservas', async (req, res) => {
-        res.render('user/turnos', {});
+    router.get('/reserves', async (req, res) => {
+        const con = mysql.createConnection(database);
 
-        // const con = mysql.createConnection(database);
+        try {
+            const [results] = await con.promise().query('SELECT * FROM rooms');
+            const [results2] = await con.promise().query('SELECT * FROM reserves WHERE date >= ');
 
-        // try {
-        //     const [results] = await con.promise().query('');
-
-        //     res.render('dashboard/dashboard', { content: 'home', data: results[0] }); 
-        // } catch (error) {
-        //     console.log(error)
-        // } finally {
-        //     con.end();
-        // }
+            res.render('user/turnos', { rooms: results[0] }); 
+        } catch (error) {
+            console.log(error)
+        } finally {
+            con.end();
+        }
     });
 }
