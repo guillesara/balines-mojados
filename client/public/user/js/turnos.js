@@ -1,3 +1,4 @@
+//Calendario
 const daysTag = document.querySelector(".days"),
     currentDate = document.querySelector(".current-date"),
     prevNextIcon = document.querySelectorAll(".icons span");
@@ -33,7 +34,6 @@ const renderCalendar = () => {
     currentDate.innerText = `${months[currMonth]} ${currYear}`;
     daysTag.innerHTML = liTag;
 };
-
 renderCalendar();
 
 prevNextIcon.forEach(icon => {
@@ -50,3 +50,15 @@ prevNextIcon.forEach(icon => {
         renderCalendar();
     });
 });
+
+
+//Selc cancha
+document.querySelectorAll(".cancha").forEach((e) => {
+    e.addEventListener("click", (e2) => {
+        document.querySelectorAll(".cancha").forEach((e3) => {
+            e3.classList.remove("selected");
+        })
+
+        e.classList.add("selected");
+    })
+})
