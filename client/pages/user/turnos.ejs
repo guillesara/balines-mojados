@@ -9,8 +9,15 @@
     <link rel="stylesheet" href="<%= getFile('user/css/turnos.css') %>">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Balines Mojados</title>
+
+   
 </head>
 <body>
+
+    <script>
+        let rooms = JSON.parse("<%= JSON.stringify(rooms) %>");
+        console.log(rooms)
+    </script>
     <%- include('../global/components/header.ejs') %>
     <section class="secondSection" id="info">
         <div class="title">
