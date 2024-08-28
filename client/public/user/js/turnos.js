@@ -5,7 +5,8 @@ const daysTag = document.querySelector(".days"),
 
 let date = new Date(),
     currYear = date.getFullYear(),
-    currMonth = date.getMonth();
+    currMonth = date.getMonth(),
+    active = undefined;
 
 const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
     "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
@@ -23,7 +24,7 @@ const renderCalendar = () => {
     }
 
     for (let i = 1; i <= lastDateofMonth; i++) {
-        if (i === date.getDate() && currMonth === new Date().getMonth() && currYear === new Date().getFullYear())
+        if ((active && active.getDate() === i && currMonth === active.getMonth() && currYear === active.getFullYear()) || (active == undefined && (i === date.getDate() && currMonth === new Date().getMonth() && currYear === new Date().getFullYear())))
         {
             liTag += `<li class="active">${i}</li>`;
         }
@@ -43,6 +44,21 @@ const renderCalendar = () => {
 
     currentDate.innerText = `${months[currMonth]} ${currYear}`;
     daysTag.innerHTML = liTag;
+
+    document.querySelectorAll(".days li").forEach(e => {
+        if (e.className != "inactive")
+        {
+            e.addEventListener("click", () => {
+                document.querySelectorAll(".days li").forEach(e2 => {
+                    e2.classList.remove("active");
+                });
+    
+                e.classList.add("active");
+                
+                active = new Date(currYear, currMonth, Number(e.textContent));
+            })
+        }
+    })
 };
 renderCalendar();
 
@@ -60,7 +76,6 @@ prevNextIcon.forEach(icon => {
         renderCalendar();
     });
 });
-
 
 //Selc cancha
 document.querySelectorAll(".cancha").forEach((e) => {
