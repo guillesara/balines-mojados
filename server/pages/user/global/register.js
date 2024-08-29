@@ -14,23 +14,24 @@ module.exports = (router, database) =>
     });
     router.post('/register', async (req, res) => {
         const body = req.body;
+        if (body.username < 4 && body.password < 4)
+        {
+            res.render("global/home", {
+                alert: {
+                    title: "Error",
+                    message: "Incorrect data",
+                    icon: "error",
+                    showConfirmButton: true,
+                    time: 5000,
+                    ruta: "register"
+                }
+            });
+            return;
+        }
+
         const con = mysql.createConnection(database);
 
         try {
-            if (body.username < 4 && body.password < 4)
-            {
-                res.render("global/home", {
-                    alert: {
-                        title: "Error",
-                        message: "Incorrect data",
-                        icon: "error",
-                        showConfirmButton: true,
-                        time: 5000,
-                        ruta: "register"
-                    }
-                });
-            }
-
             const [results] = await con.promise().query(`SELECT id FROM users WHERE username = ? OR mail = ?`, [body.username, body.mail]);
             if (results[0])
             {
@@ -44,7 +45,6 @@ module.exports = (router, database) =>
                         ruta: "register"
                     }
                 });
-
                 return;
             }
 

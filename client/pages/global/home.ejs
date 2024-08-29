@@ -18,31 +18,10 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni consequatur numquam dolorem, sunt sequi ullam dolorum eligendi quam, possimus ea, facere unde rerum veritatis deserunt repellat. Quasi ullam beatae laborum.</p>            
         </div>
         <div class="buttons">
-            <a href="#">Reservar</a>
-            <a href="#">Contacto</a>
+            <a href="#info">Reservar</a>
+            <a href="#contacto">Contacto</a>
         </div>
     </section>
-    <div class="wrapper">
-        <div class="top">
-          <p class="current-date"></p>
-          <div class="icons">
-            <span id="prev" class="material-symbols-rounded"><i class='bx bxs-chevron-left' ></i></span>
-            <span id="next" class="material-symbols-rounded"><i class='bx bxs-chevron-right' ></i></span>
-          </div>
-        </div>
-        <div class="calendar">
-          <ul class="weeks">
-            <li>DO</li>
-            <li>LU</li>
-            <li>MA</li>
-            <li>MI</li>
-            <li>JU</li>
-            <li>VI</li>
-            <li>SA</li>
-          </ul>
-          <ul class="days"></ul>
-        </div>
-      </div>
     <video src="<%= getFile('images/bg.mp4') %>" loop autoplay muted controls></video>
     <div class="bg"></div>
     <section class="secondSection" id="info">
@@ -64,7 +43,7 @@
                             - 1 hora de juego
                         </p>
                     </div>
-                    <a href="#">Entrar</a>
+                    <a href="/user/reserves?id=1">Entrar</a>
                 </div>
             </div>
 
@@ -82,7 +61,7 @@
                             - 1 horas de juego 
                         </p>
                     </div>
-                    <a href="#">Entrar</a>
+                    <a href="/user/reserves?id=2">Entrar</a>
                 </div>
             </div>
 
@@ -100,7 +79,7 @@
                             - 1 horas de juego
                         </p>
                     </div>
-                    <a href="#">Entrar</a>
+                    <a href="/user/reserves?id=3">Entrar</a>
                 </div>
             </div>
 
@@ -118,14 +97,14 @@
                             - 1 horas de juego <br>
                         </p>
                     </div>
-                    <a href="#">Entrar</a>
+                    <a href="/user/reserves?id=4">Entrar</a>
                 </div>
             </div>
         </div>
     </section>
     <div class="wsp"><a href="https://api.whatsapp.com/send?phone=5491165651414&text=Hola,%20necesito%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Balines%20Mojados" target="_blank"><i class='bx bxl-whatsapp'></i></a></div>
     
-    <footer>
+    <footer id="contacto">
         <div class="information">
             <div class="info">
                 <h2>¿Donde estamos ubicados?</h2>
