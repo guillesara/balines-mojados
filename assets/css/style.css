@@ -512,6 +512,26 @@ body {
 #content main .table-data .todo .todo-list li:last-child {
 	margin-bottom: 0;
 }
+
+main .register {
+	box-shadow: 4px 4px 16px rgba(0, 0, 0, .1);
+}
+
+main .register .inputs {
+	margin: 2%;
+}
+
+main .register input, main .register select {
+	padding: 5px 15px;
+	margin-bottom: 2%;
+	width: 250px;
+}
+
+main .register button {
+	padding: 5px 75px;
+	margin-bottom: 2%;
+	width: 250px;
+}
 /* MAIN */
 /* CONTENT */
 
@@ -587,3 +607,4 @@ body {
 		min-width: 420px;
 	}
 }
+

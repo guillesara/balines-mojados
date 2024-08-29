@@ -75,30 +75,55 @@
 				</div>
 			</div>
 
-			<ul class="box-info">
-				<li>
-					<i class='bx bxs-calendar-check' ></i>
-					<span class="text">
-						<h3>1020</h3>
-						<p>Nuevo turno</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-group' ></i>
-					<span class="text">
-						<h3>2834</h3>
-						<p>Visitantes</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-dollar-circle' ></i>
-					<span class="text">
-						<h3>$2543 ARS</h3>
-						<p>Total de ventas</p>
-					</span>
-				</li>
-			</ul>
 
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Todos los turnos</h3>
+						<form action="#">
+							<div class="form-input">
+								<input type="search" placeholder="Buscar...">
+								<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+							</div>
+						</form>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>Usuario</th>
+								<th>Fecha de orden</th>
+								<th>Estado</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status completed">Completed</span> <button><i class='bx bx-edit' ></i></button></td>
+							</tr>
+							<tr>
+								<td>
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+				
+								<td><span class="status pending">Cancelado</span><button><i class='bx bx-edit' ></i></button></td>
+								
+							</tr>
+							<tr>
+								<td>
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status completed">Completed</span><button><i class='bx bx-edit' ></i></button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</main>
 	</section>
 	<script src="assets/js/script.js"></script>
