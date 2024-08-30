@@ -4,8 +4,8 @@ const functions = require('../../../functions/functions');
 module.exports = (router, database) => 
 {
     router.get('/login', async (req, res) => {
-        if (auth.isAuthenticated(functions.getCookie(req, "token"))) return res.redirect(`/user/panel`);
-        if ((await auth.login(req, res, {token: functions.getCookie(req, "token")})).status) return res.redirect(`/user/panel`);
+        if (auth.isAuthenticated(functions.getCookie(req, "token"))) return res.redirect(`/#info`);
+        if ((await auth.login(req, res, {token: functions.getCookie(req, "token")})).status) return res.redirect(`/#info`);
 
         res.render('global/home', { includes: 'login'});
     });
@@ -14,6 +14,6 @@ module.exports = (router, database) =>
         const result = await auth.login(req, res, {username: body.username, password: body.password})
         if (!result.status) return res.render('global/home', {  includes: 'login', error: result.info });
 
-        res.redirect(`/user/panel`);   
+        res.redirect(`/#info`);   
     });
 }

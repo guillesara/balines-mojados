@@ -71,9 +71,11 @@
     top: 15px;
 }
 
-.input-radio label {
-	display: inline;
-	margin-left: 10px;
+
+.secondSection .left .reserve small {
+	color: #e74c3c;
+	position: absolute;
+	visibility: hidden;
 }
 
 .secondSection .left .reserve h1 {

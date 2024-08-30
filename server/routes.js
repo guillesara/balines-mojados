@@ -16,7 +16,7 @@ const isAuthenticated = async (req, res, next) => {
     let isAuthenticated = auth.isAuthenticated(functions.getCookie(req, 'token'));
     if (isAuthenticated) return next();
 
-    res.redirect(`/`);
+    res.redirect(`/login`);
 };
 
 routerUser.use(isAuthenticated);
@@ -39,6 +39,11 @@ const database = {
     database: config.db.db
 }
 
+//MP
+const { MercadoPagoConfig } = require('mercadopago');
+const mp = new MercadoPagoConfig({ accessToken: config.mp.accessToken, options: { timeout: 5000, idempotencyKey: 'abc' } });
+
+
 //Pages loader
 let files = fs.readdirSync('./server/pages/api').filter(file => file.endsWith('.js'));
 for (let x of files) 
@@ -58,7 +63,7 @@ files = fs.readdirSync('./server/pages/user/user').filter(file => file.endsWith(
 for (let x of files) 
 {
     const Event = require(`./pages/user/user/${x}`);
-    Event(routerUser, database)
+    Event(routerUser, database, mp)
 }
 
 files = fs.readdirSync('./server/pages/user/admin')

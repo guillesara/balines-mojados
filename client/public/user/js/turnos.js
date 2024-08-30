@@ -128,6 +128,7 @@ const renderCalendar = () => {
                 
                 active = new Date(currYear, currMonth, Number(e.textContent));
                 dateInput.value = active.toISOString().split("T")[0];
+                timeInput.value = undefined;
                 setHorarios();
             })
         }
@@ -153,14 +154,79 @@ prevNextIcon.forEach(icon => {
 });
 
 //Selc cancha
-document.querySelectorAll(".cancha").forEach((e) => {
+let canchas = document.querySelectorAll(".cancha");
+let canchaInput = document.getElementById("type");
+
+canchaInput.value = roomType;
+
+canchas.forEach((e) => {
     e.addEventListener("click", (e2) => {
-        document.querySelectorAll(".cancha").forEach((e3) => {
+        canchas.forEach((e3) => {
             e3.classList.remove("selected");
         })
 
         e.classList.add("selected");
         roomType = e.getAttribute("value");
+        canchaInput.value = roomType;
         setHorarios()
     })
 })
+
+//Validate
+const form = document.getElementById('form');
+const inputs = form.querySelectorAll('input');
+const errorMessage = document.getElementById('errorMessage');
+
+form.addEventListener('submit', function(event) {
+    if (!validateForm()) {
+        event.preventDefault();
+    }
+    //event.preventDefault();
+});
+
+inputs.forEach(input => {
+    input.addEventListener('keyup', function() {
+        validateForm();
+    });
+});
+
+function validateForm() {
+    const name = form.name.value.trim();
+    const lastname = form.lastname.value.trim();
+    const phone = form.phone.value.trim();
+    const players = form.players.value.trim();
+    const date = form.date.value;
+    const planId = form.planId.value.trim();
+    const time = form.time.value;
+
+    if (!name || !lastname || !phone || !players || !date || !planId || !time) {
+        showError("Complete todos los campos.");
+        return false;
+    }
+
+    const currentDate = new Date();
+    const inputDate = new Date(date);
+    const maxDate = new Date();
+
+    inputDate.setDate(inputDate.getDate() + 1);
+    maxDate.setMonth(currentDate.getMonth() + 1);
+
+    if (inputDate < currentDate || inputDate > maxDate) {
+        showError("La fecha debe estar entre hoy y dentro de un mes.");
+        return false;
+    }
+
+    const [inputHours, inputMinutes] = time.split(':').map(Number);
+    if (inputHours < 8 || (inputHours >= 17 && inputMinutes > 0)) {
+        showError("La hora debe estar entre las 08:00 y las 17:00.");
+        return false;
+    }
+
+    showError(false);
+    return true;
+}
+
+function showError(message) {
+    errorMessage.style.visibility = message ? "visible" : "hidden";
+    errorMessage.textContent = message;
+}

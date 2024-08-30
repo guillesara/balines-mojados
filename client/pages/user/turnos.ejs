@@ -14,11 +14,26 @@
         let rooms = JSON.parse('<%- JSON.stringify(rooms) %>');
         let reserves = JSON.parse('<%- JSON.stringify(reserves) %>');
     </script>
+    <!-- <script src="https://sdk.mercadopago.com/js/v2"></script> -->
 </head>
 <body>
+    <!-- <div id="wallet_container">
+    </div>
+    <script>
+        const mp = new MercadoPago('YOUR_PUBLIC_KEY', {
+            locale: 'es-AR'
+        });
+
+        mp.bricks().create("wallet", "wallet_container", {
+            initialization: {
+                preferenceId: "<PREFERENCE_ID>",
+            },
+        });
+    </script> -->
+
     <%- include('../global/components/header.ejs') %>
     
-    <form action="/user/reserves" method="post">
+    <form action="/user/reserves" method="post" id="form">
         <section class="secondSection" id="info">
             <div class="title">
                 <h1>Seleccionar Campo</h1>
@@ -36,6 +51,7 @@
                     <img src="<%= getFile('user/images/cancha.png') %>" alt="">
                     <span>Cancha Grande (20 personas)</span>
                 </div>
+                <input type="text" name="type" id="type">
             </div>
             <div class="form">
                 <div class="left">
@@ -56,6 +72,7 @@
                             <h5>Cantidad de personas</h5>
                             <input type="number" name="players" id="players">
                         </div>
+                        <small id="errorMessage">Error message</small>
                     </div>
                 </div>
                 <div class="middle">
