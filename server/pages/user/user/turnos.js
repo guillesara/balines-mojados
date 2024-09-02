@@ -41,7 +41,7 @@ module.exports = (router, database, mp) =>
         const endHour = 17;
 
         if (
-            (!body.name || !body.lastname || !body.phone || !body.players || !body.date || !body.planId || !body.time) ||
+            (!body.name || !body.lastname || !body.phone || !body.date || !body.time || !body.players || !body.planId || !body.type) ||
             (inputDate < today || inputDate > oneMonthLater) ||                       
             (hour < startHour || hour > endHour || (hour === endHour && minute > 0))
         ) {
@@ -66,8 +66,8 @@ module.exports = (router, database, mp) =>
             const [results_rooms] = await con.promise().query('SELECT type, capacity FROM rooms GROUP BY type');
             const [results_reserves] = await con.promise().query('SELECT re.date, re.time, re.players, ro.`type`, ro.capacity FROM reserves re JOIN rooms ro ON re.room = ro.id WHERE `date` >= CURDATE()');
 
-            let plan = results_plans.find(x => x.id == body.planId);
-            let room = results_rooms.find(x => x.type == body.type);
+            const plan = results_plans.find(x => x.id == body.planId);
+            const room = results_rooms.find(x => x.type == body.type);
             console.log(room, plan )
             if (
                 (!plan) ||
@@ -90,42 +90,59 @@ module.exports = (router, database, mp) =>
 
             const preference = new Preference(mp);
 
-            preference.create({
-                body: {
-                    payer: {
-                        name: body.name,
-                        lastname: body.lastname,
-                        email: results_user[0].mail,
-                        phone: {
-                            area_code: "54",
-                            number: body.phone
-                        }
-                    },
-                    back_urls: {
-                        success: "http://localhost/reserve_success",
-                        pending: "http://localhost/reserve_pending",
-                        failure: "http://localhost/reserve_failure"
-                    },
-                    payment_methods: {
-                        excluded_payment_methods: [],
-                        excluded_payment_types: [
+            try {
+                let a = await preference.create({
+                    body: {
+                        expires: true,
+                        expiration_date_from: moment().tz('America/Argentina/Buenos_Aires').format('YYYY-MM-DDTHH:mm:ss.SSSZ'),
+                        expiration_date_to: moment().tz('America/Argentina/Buenos_Aires').add(30, 'minutes').format('YYYY-MM-DDTHH:mm:ss.SSSZ'),
+                        auto_return: "all",
+                        back_urls: {
+                            success:  req.headers.host + "/mp/back",
+                            pending:  req.headers.host + "/mp/back",
+                            failure:  req.headers.host + "/mp/back"
+                        },
+                        payment_methods: {
+                            excluded_payment_methods: [],
+                            excluded_payment_types: [
+                                {
+                                    id: "ticket"
+                                }
+                            ],
+                            installments: 1
+                        },
+                        items: [
                             {
-                                id: "ticket"
+                                title: 'Pack ' + plan.name,
+                                quantity: 1,
+                                unit_price: 2000
                             }
                         ],
-                        installments: 1
-                    },
-                    items: [
-                        {
-                            title: 'Pack ' + plan.name,
-                            quantity: 1,
-                            unit_price: 2000
+                        payer: {
+                            name: body.name,
+                            lastname: body.lastname,
+                            email: results_user[0].mail,
+                            phone: {
+                                area_code: "54",
+                                number: body.phone
+                            }
+                        },
+                        metadata: {
+                            name: body.name,
+                            lastname: body.lastname,
+                            phone: body.phone,
+                            players: body.players,
+                            date: datebody.date,
+                            planId: body.planId,
+                            time: body.time
                         }
-                    ],
-                }
-            })
-            .then(console.log)
-            .catch(console.log);
+                    }
+                })
+
+                console.log(a)
+            } catch (error) {
+                console.log("Error: ", error)
+            }
 
             res.send("xd")
         } catch (error) {
@@ -133,7 +150,5 @@ module.exports = (router, database, mp) =>
         } finally {
             con.end();
         }
-    });
-    router.post('/reserve_success', async (req, res) => {
     });
 }
