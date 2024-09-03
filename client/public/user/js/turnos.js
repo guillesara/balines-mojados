@@ -8,7 +8,6 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
 });
 
-
 //set plan
 let plan = plans.find(x => x.id == params.id)
 document.getElementById("planName").textContent = `Pack ${plan.name}`
@@ -29,7 +28,8 @@ const setHorarios = () => {
             const date = new Date(x.date);
             return x.time == horario && (active.getDate() === date.getDate() && date.getMonth() === active.getMonth() && date.getFullYear() === active.getFullYear());
         });
-        return !reserva || reserves.filter(x => x.type == roomType).length < rooms.filter(x => x.type == roomType).length;
+        
+        return !reserva || reserves.filter(x => x.type == roomType).length < rooms.find(x => x.type == roomType).quantity;
     });
 
     let spanTag = "";
@@ -57,6 +57,7 @@ const setHorarios = () => {
 
                 timeInput.value = e.textContent;
                 e.textContent = e.textContent + " ⬤";
+                validateForm();
             });
         }
     })
@@ -64,8 +65,10 @@ const setHorarios = () => {
 
 //Calendario
 let dateInput = document.getElementById("date");
-//FIXEAR
-dateInput.value =  active.toISOString().split("T")[0];
+
+let curD = new Date(active);
+curD.setDate(curD.getDate()-1);
+dateInput.value = curD.toISOString().split("T")[0];
 
 const daysTag = document.querySelector(".days"),
     currentDate = document.querySelector(".current-date"),
@@ -130,6 +133,7 @@ const renderCalendar = () => {
                 dateInput.value = active.toISOString().split("T")[0];
                 timeInput.value = undefined;
                 setHorarios();
+                validateForm();
             })
         }
     })
@@ -168,7 +172,8 @@ canchas.forEach((e) => {
         e.classList.add("selected");
         roomType = e.getAttribute("value");
         canchaInput.value = roomType;
-        setHorarios()
+        setHorarios();
+        validateForm();
     })
 })
 
@@ -201,6 +206,12 @@ function validateForm() {
 
     if (!name || !lastname || !phone || !players || !date || !planId || !time) {
         showError("Complete todos los campos.");
+        return false;
+    }
+
+    if (players > rooms.find(x => x.type === roomType).capacity)
+    {
+        showError("Los jugadores no pueden ser mayor a la capacidad del campo.");
         return false;
     }
 

@@ -14,7 +14,7 @@ module.exports = (router, database, mp) =>
 
         try {
             const [results_plans] = await con.promise().query('SELECT * FROM plans');
-            const [results_rooms] = await con.promise().query('SELECT id, type FROM rooms');
+            const [results_rooms] = await con.promise().query('SELECT * FROM rooms');
             const [results_reserves] = await con.promise().query('SELECT re.date, re.time, re.players, ro.`type`, ro.capacity FROM reserves re JOIN rooms ro ON re.room = ro.id WHERE `date` >= CURDATE()');
 
             if (!results_plans.find(x => x.id == req.query.id)) return res.redirect("/");
@@ -57,6 +57,7 @@ module.exports = (router, database, mp) =>
             });
             return;
         }
+        
 
         const con = mysql.createConnection(database);
 
@@ -67,7 +68,7 @@ module.exports = (router, database, mp) =>
             const [results_reserves] = await con.promise().query('SELECT re.date, re.time, re.players, ro.`type`, ro.capacity FROM reserves re JOIN rooms ro ON re.room = ro.id WHERE `date` >= CURDATE()');
             const plan = results_plans.find(x => x.id == body.planId);
             const room = results_rooms.find(x => x.type == body.type);
-            console.log(room)
+            
             if (
                 (!plan) ||
                 (!room || body.players > room.capacity)
@@ -76,6 +77,39 @@ module.exports = (router, database, mp) =>
                     alert: {
                         title: "Error",
                         message: "Incorrect data 2",
+                        icon: "error",
+                        showConfirmButton: true,
+                        time: 5000,
+                        ruta: body.planId ? `user/reserves?id=${body.planId}` : ""
+                    }
+                });
+                return;
+            }
+
+            console.log(body)
+
+            const horarios = [
+                '08:00:00', '09:00:00', '10:00:00', '11:00:00', 
+                '12:00:00', '13:00:00', '14:00:00', '15:00:00', 
+                '16:00:00', '17:00:00'
+            ];
+        
+            const horariosDisponibles = horarios.filter(horario => {
+                const reserva = results_reserves.find(x => {
+                    const date = new Date(x.date);
+                    const curDate = new Date(body.date);
+                    return x.time == horario && (curDate.getDate() === date.getDate() && date.getMonth() === curDate.getMonth() && date.getFullYear() === curDate.getFullYear());
+                });
+        
+                return !reserva || results_reserves.filter(x => x.type == body.type).length < results_rooms.find(x => x.type == body.type).quantity;
+            });
+            
+            if (!horariosDisponibles.find(x => x === (body.time + ":00")))
+            {
+                res.render("global/home", {
+                    alert: {
+                        title: "Error",
+                        message: "Incorrect data 3",
                         icon: "error",
                         showConfirmButton: true,
                         time: 5000,
@@ -138,7 +172,6 @@ module.exports = (router, database, mp) =>
                     }
                 })
 
-                //console.log(newPayment)
                 res.redirect(newPayment.init_point);
             } catch (error) {
                 console.log("Error: ", error);

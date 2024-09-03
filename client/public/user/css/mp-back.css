@@ -150,14 +150,15 @@ body {
     display: none;
 }
 
-.wrapper .button button {
+.wrapper .button a {
     position: absolute;
+    display: flex;
     width: 30%;
     left: 35%;
     top: 85%;
     outline: none;
     border: 0;
-    font-size: 16;
+    font-size: 15px;
     line-height: 1;
     height: 35px;
     border-radius: 8px;
@@ -165,6 +166,9 @@ body {
     color: #fff;
     cursor: pointer;
     transition: all .1s;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .wrapper .button button:hover {
@@ -175,14 +179,14 @@ body {
     background: #008deb;
 }
 
-.wrapper .status.success + .text + .text2 + .button {
+.wrapper .status.success + .text + .button {
     display: block;
     opacity: 0;
     animation: fadeOut 2s forwards;
     animation-delay: 0.5s;
 }
 
-.wrapper .status.error + .text + .text2 + .button {
+.wrapper .status.error + .text + .button {
     display: block;
     opacity: 0;
     animation: fadeOut 2s forwards;

@@ -12,9 +12,7 @@ module.exports = (router, database, mp) =>
     });
 
     router.post('/mp/status', async (req, res) => {
-        
         const query = req.body;
-        console.log(query)
         if (!query.payment_id) res.json({status: true, title: "Error", description: "El id de pago no se encontro."});
         
         const con = mysql.createConnection(database);
@@ -29,6 +27,7 @@ module.exports = (router, database, mp) =>
             if (curPayment.status !== 'approved') return res.json({status: false, title: "Error en el pago", description: "El pago no fue aprobado."});
 
             let metadata = curPayment.metadata;
+            console.log(metadata)
             const [results_insert] = await con.promise().query('INSERT INTO reserves SET ?', {payment_id: query.payment_id, user: metadata.user_id, room: metadata.room_id, plan: metadata.plan_id, date: metadata.date, time: metadata.time, players: metadata.players, name: metadata.name, lastname: metadata.lastname, phone: metadata.phone});
 
             res.json({status: true, title: "¡Gracias por su compra!", description: "Le informamos que hemos enviado el codigo de reserva a su dirección de correo electrónico. Por favor, revise su bandeja de entrada y carpeta de spam en caso de no recibirlos. Si tiene alguna pregunta o necesita ayuda adicional, no dude en ponerse en contacto con nosotros. ¡Esperamos que disfrute su juego!"});
