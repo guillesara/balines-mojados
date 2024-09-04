@@ -2,7 +2,7 @@
 Sistema de turnos para Balines Mojados
 
 # config
-``json
+```json
 {
     "web": {
         "port": 80
@@ -20,4 +20,4 @@ Sistema de turnos para Balines Mojados
         "accessToken": ""
     } 
 }
-``
+```
