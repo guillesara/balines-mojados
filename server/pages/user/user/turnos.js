@@ -29,11 +29,12 @@ module.exports = (router, database, mp) =>
     router.post('/reserves', async (req, res) => {
         const body = req.body;
         const userData = auth.getUser(functions.getCookie(req, 'token'));
-        const inputDate = new Date(body.date);
+        const inputDate = new Date(body.date + 'T00:00:00');
         const today = new Date();
         const oneMonthLater = new Date();
         
-        inputDate.setDate(inputDate.getDate() + 1)
+        inputDate.setHours(0, 0, 0, 0);
+        today.setHours(0, 0, 0, 0);
         oneMonthLater.setMonth(today.getMonth() + 1);
         
         const [hour, minute] = body.time ? body.time.split(':').map(Number) : [null, null];
@@ -85,9 +86,7 @@ module.exports = (router, database, mp) =>
                 });
                 return;
             }
-
-            console.log(body)
-
+            
             const horarios = [
                 '08:00:00', '09:00:00', '10:00:00', '11:00:00', 
                 '12:00:00', '13:00:00', '14:00:00', '15:00:00', 
@@ -131,7 +130,7 @@ module.exports = (router, database, mp) =>
                         back_urls: {
                             success:  req.headers.host + "/user/mp/back",
                             pending:  req.headers.host + "/user/mp/back",
-                            failure:  req.headers.host + "/user/mp/back"
+                            failure:  req.headers.host + "/"
                         },
                         payment_methods: {
                             excluded_payment_methods: [],
@@ -151,7 +150,7 @@ module.exports = (router, database, mp) =>
                         ],
                         payer: {
                             name: body.name,
-                            lastname: body.lastname,
+                            surname: body.lastname,
                             email: results_user[0].mail,
                             phone: {
                                 area_code: "54",
@@ -160,8 +159,9 @@ module.exports = (router, database, mp) =>
                         },
                         metadata: {
                             user_id: userData.id,
-                            name: body.name,
-                            lastname: body.lastname,
+                            first_name: body.name,
+                            last_name: body.lastname,
+                            email: results_user[0].mail,
                             phone: body.phone,
                             date: body.date,
                             time: body.time,

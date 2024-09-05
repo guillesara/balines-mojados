@@ -1,0 +1,55 @@
+<div class="head-title">
+    <div class="left">
+        <h1>Panel</h1>
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">Panel</a>
+            </li>
+            <li><i class='bx bx-chevron-right' ></i></li>
+            <li>
+                <a class="active" href="#">Inicio</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<ul class="box-info">
+    <li>
+        <i class='bx bxs-group' ></i>
+        <span class="text">
+            <h3><%= data.users %></h3>
+            <p>Usuarios</p>
+        </span>
+    </li>
+    <li>
+        <i class='bx bxs-calendar-check' ></i>
+        <span class="text">
+            <h3><%= data.reserves %></h3>
+            <p>Turnos de hoy</p>
+        </span>
+    </li>
+    <li>
+        <i class='bx bxs-dollar-circle' ></i>
+        <span class="text">
+            <h3>$<%= data.sells %> ARS</h3>
+            <p>Total de ventas de hoy</p>
+        </span>
+    </li>
+</ul>
+
+<div class="table-data">
+    <div class="content-data">
+        <div class="head">
+            <h3>Sales Report</h3>
+        </div>
+        <div class="chart">
+            <div id="chart"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let reserves = JSON.parse('<%- JSON.stringify(reserves) %>');
+</script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="<%- getFile('admin/js/home.js') %>"></script>

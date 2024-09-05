@@ -43,6 +43,19 @@ const database = {
 const { MercadoPagoConfig } = require('mercadopago');
 const mp = new MercadoPagoConfig({ accessToken: config.mp.accessToken, options: { timeout: 5000, idempotencyKey: 'abc' } });
 
+//Mail
+const nodemailer = require("nodemailer");
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: config.email.user, 
+        pass: config.email.password, 
+    },
+});
+
+transporter.verify().then(async () => {
+    console.log("Email ready");
+})
 
 //Pages loader
 let files = fs.readdirSync('./server/pages/api').filter(file => file.endsWith('.js'));
@@ -63,7 +76,7 @@ files = fs.readdirSync('./server/pages/user/user').filter(file => file.endsWith(
 for (let x of files) 
 {
     const Event = require(`./pages/user/user/${x}`);
-    Event(routerUser, database, mp)
+    Event(routerUser, database, mp, transporter)
 }
 
 files = fs.readdirSync('./server/pages/user/admin')

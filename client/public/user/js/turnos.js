@@ -67,8 +67,7 @@ const setHorarios = () => {
 let dateInput = document.getElementById("date");
 
 let curD = new Date(active);
-curD.setDate(curD.getDate()-1);
-dateInput.value = curD.toISOString().split("T")[0];
+dateInput.value = curD.toLocaleDateString('sv-SE');
 
 const daysTag = document.querySelector(".days"),
     currentDate = document.querySelector(".current-date"),
@@ -130,7 +129,7 @@ const renderCalendar = () => {
                 e.classList.add("active");
                 
                 active = new Date(currYear, currMonth, Number(e.textContent));
-                dateInput.value = active.toISOString().split("T")[0];
+                dateInput.value = active.toLocaleDateString('sv-SE');;
                 timeInput.value = undefined;
                 setHorarios();
                 validateForm();

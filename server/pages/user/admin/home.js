@@ -6,9 +6,16 @@ module.exports = (router, database) =>
         const con = mysql.createConnection(database);
         
         try {
-            const [results] = await con.promise().query(`SELECT u.id, u.group, u.username, c.name AS course, p.date FROM users u LEFT JOIN purchases p ON u.id = p.userId LEFT JOIN courses c ON p.courseId = c.id`);
+            const [results_data] = await con.promise().query('SELECT (SELECT COUNT(id) FROM users) AS \'users\', COUNT(r.id) AS \'reserves\', COUNT(r.id)*p.price AS \'sells\' FROM reserves r JOIN plans p ON p.id = r.plan WHERE `date` >= CURDATE();');
+            const [results_reserves] = await con.promise().query('SELECT * FROM reserves');
 
-            res.render('admin/home', {users: results});
+            let data = { 
+                users: results_data[0].users, 
+                reserves: results_data[0].reserves,
+                sells: results_data[0].sells.toLocaleString('es-ES')
+            }
+
+            res.render('admin/dashboard', { content: 'home', data: data, reserves: results_reserves });
         } catch (error) {
             console.error(error);
         } finally {

@@ -1,21 +1,21 @@
 {
-  "name": "trading",
+  "name": "balines-mojados",
   "version": "1.0.0",
-  "description": "trading page for school proyect",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thedevlucas/test.git"
+    "url": "git+https://github.com/guillesara/balines-mojados.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/thedevlucas/test/issues"
+    "url": "https://github.com/guillesara/balines-mojados/issues"
   },
-  "homepage": "https://github.com/thedevlucas/test#readme",
+  "homepage": "https://github.com/guillesara/balines-mojados#readme",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
@@ -31,6 +31,7 @@
     "moment-timezone": "^0.5.45",
     "morgan": "^1.10.0",
     "mysql2": "^3.10.2",
+    "nodemailer": "^6.9.15",
     "path": "^0.12.7"
   }
 }
