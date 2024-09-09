@@ -1,0 +1,66 @@
+<div class="head-title">
+    <div class="left">
+        <h1>Crear reserva</h1>
+        <ul class="breadcrumb">
+            <li>
+                <a class="active" href="/admin">Panel</a>
+            </li>
+            <li><i class='bx bx-chevron-right' ></i></li>
+            <li>
+                <a href="#">Crear reserva</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<form action="/admin/reserves/create" method="post" class="register">
+    <div class="inputs">
+        <div class="input">
+            <h5>room</h5>
+            <select name="room" id="room">
+                <option value="" disabled selected>Seleccione un pack</option>
+                <% for(let x of rooms) { %>
+                    <option value="<%= x.id %>"><%= x.type %> (<%= x.capacity %> personas)</option>
+                <% } %>
+            </select>
+        </div>
+        <div class="input">
+            <h5>Tipo de pack</h5>
+            <select name="plan" id="plan">
+                <option value="" disabled selected>Seleccione un pack</option>
+                <% for(let x of plans) { %>
+                    <option value="<%= x.id %>"><%= x.name %></option>
+                <% } %>
+            </select>
+        </div>
+        <div class="input">
+            <h5>Nombre</h5>
+            <input type="text" name="name" id="name">
+        </div>
+        <div class="input">
+            <h5>Apellido</h5>
+            <input type="text" name="lastname" id="lastname">
+        </div>
+        <div class="input">
+            <h5>Email</h5>
+            <input type="email" name="email" id="email">
+        </div>
+        <div class="input">
+            <h5>Telefono</h5>
+            <input type="number" name="phone" id="phone">
+        </div>
+        <div class="input">
+            <h5>Cantidad de personas</h5>
+            <input type="number" name="players" id="players">
+        </div>
+        <div class="input">
+            <h5>Dia</h5>
+            <input type="date" name="date" id="date">
+        </div>
+        <div class="input">
+            <h5>Horario</h5>
+            <input type="time" name="time" id="time">
+        </div>
+        <button>Registrar</button>
+    </div>
+</form>

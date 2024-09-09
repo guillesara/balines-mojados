@@ -18,3 +18,13 @@ const sidebar = document.getElementById('sidebar');
 menuBar.addEventListener('click', function () {
 	sidebar.classList.toggle('hide');
 })
+
+//Active sidebar
+let path = window.location.pathname
+sidebar.querySelectorAll("a").forEach(item=> {
+	console.log(item.getAttribute("href"), path)
+	if (item.getAttribute("href") == path)
+	{
+		item.parentElement.classList.add("active")
+	}
+});

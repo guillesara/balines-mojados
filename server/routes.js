@@ -85,7 +85,7 @@ for (let x of files)
     if (x.endsWith('.js'))
     {
         const Event = require(`./pages/user/admin/${x}`);
-        Event(routerAdmin, database) 
+        Event(routerAdmin, database, transporter) 
     }
     else
     {
@@ -93,7 +93,7 @@ for (let x of files)
         for (let x2 of files) 
         {
             const Event = require(`./pages/user/admin/${x}/${x2}`);
-            Event(routerAdmin, database) 
+            Event(routerAdmin, database, transporter) 
         }
     }
 }

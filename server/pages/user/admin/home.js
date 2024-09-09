@@ -2,7 +2,7 @@ const mysql = require('mysql2');
 
 module.exports = (router, database) => 
 {
-    router.get('/panel', async (req, res) => {
+    router.get('/', async (req, res) => {
         const con = mysql.createConnection(database);
         
         try {
@@ -12,7 +12,7 @@ module.exports = (router, database) =>
             let data = { 
                 users: results_data[0].users, 
                 reserves: results_data[0].reserves,
-                sells: results_data[0].sells.toLocaleString('es-ES')
+                sells: results_data[0].sells ? results_data[0].sells.toLocaleString('es-ES') : 0
             }
 
             res.render('admin/dashboard', { content: 'home', data: data, reserves: results_reserves });
