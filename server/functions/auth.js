@@ -186,7 +186,7 @@ module.exports.getUser = (token) => {
     if (token === undefined) return false;
 
     let user = this.clientData.find(user => user.token === token);
-    if (user === undefined) return true;
+    if (user === undefined) return false
     
     return user;
 }

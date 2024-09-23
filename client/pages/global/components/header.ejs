@@ -10,7 +10,10 @@
     </ul>
     <a class="button" id="signBtn" href="/login">Iniciar Sesión</a>
 </header>
+
 <script>
+    let user = JSON.parse('<%= getUser() %>');
+    console.log(user)
     let buttonHeader = document.getElementById("buttonHeader");
     
     if (window.location.href.indexOf("register") > -1) {

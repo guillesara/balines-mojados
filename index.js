@@ -6,6 +6,9 @@ const morgan = require('morgan');
 const path = require('path');
 const app = express();
 
+const functions = require('./server/functions/functions');
+const auth = require('./server/functions/auth');
+
 const cookieParser = require('cookie-parser');
 const bp = require('body-parser');
 
@@ -31,6 +34,11 @@ app.use((req, res, next) => {
         const depth = req.path.split('/').length - 1;
         const relativePath = '../'.repeat(depth) + filePath;
         return relativePath;
+    };
+    res.locals.getUser = function() {
+        let a = JSON.stringify(auth.getUser(functions.getCookie(req, "token")).filter(x => x.req == req));
+        console.log(a)
+        return a
     };
     next();
 });
