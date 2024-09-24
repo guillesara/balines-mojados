@@ -12,12 +12,20 @@
 </header>
 
 <script>
-    let user = JSON.parse('<%= getUser() %>');
-    console.log(user)
-    let buttonHeader = document.getElementById("buttonHeader");
-    
-    if (window.location.href.indexOf("register") > -1) {
-        buttonHeader.href = "/login"
-        buttonHeader.textContent = "Login"
+    let user = JSON.parse('<%- getUser() %>');
+    let buttonHeader = document.getElementById("signBtn");
+
+    if (user)
+    {
+        if (user.group == 'admin')
+        {
+            buttonHeader.textContent = 'Panel';
+            buttonHeader.href = '/admin/';
+        }
+        else
+        {
+            buttonHeader.textContent = 'Cerrar sesión';
+            buttonHeader.href = '/api/logout';
+        }
     }
 </script>

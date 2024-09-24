@@ -36,9 +36,12 @@ app.use((req, res, next) => {
         return relativePath;
     };
     res.locals.getUser = function() {
-        let a = JSON.stringify(auth.getUser(functions.getCookie(req, "token")).filter(x => x.req == req));
-        console.log(a)
-        return a
+        const user = auth.getUser(functions.getCookie(req, "token"));
+        let userCopy = Object.assign({}, user);
+        if (user == false) return user;
+        userCopy.res = undefined;
+        userCopy.token = undefined;
+        return JSON.stringify(userCopy);
     };
     next();
 });

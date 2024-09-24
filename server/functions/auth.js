@@ -82,6 +82,7 @@ module.exports.login = async (req, res, loginInfo) =>
 
         this.clientData.push({
             res,
+            username: result.username,
             group: result.group,
             id: result.id,
             sessionId: sessionId,
@@ -89,7 +90,7 @@ module.exports.login = async (req, res, loginInfo) =>
             clientNo: sequence++
         });
 
-        return {status: true, err: 0, info: "Logged successfully", data: {id: result.id, token: token}};
+        return {status: true, err: 0, info: "Logged successfully", data: {id: result.id, token: token, group: result.group}};
     } catch (error) {
         console.error(error);
         return {status: false, err: 500, info: "Server error"};

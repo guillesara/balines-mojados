@@ -1,5 +1,3 @@
-console.log(reserves)
-
 let series = [];
 let xData = [];
 
